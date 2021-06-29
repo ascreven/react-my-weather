@@ -1,0 +1,8 @@
+.city-weather__title {
+  margin-bottom: 0;
+}
+
+.city-weather__list {
+  list-style: none;
+  padding: 0;
+}

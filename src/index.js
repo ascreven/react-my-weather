@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { CITIES } from './cities.mock';
+import './index.css';
+
+const cities = [...CITIES];
+
+function reducer( state= {cities}, action) {
+
+  switch (action.type){
+    case 'ADD_CITY':
+      return Object.assign({}, state, {cities: [...action.city]})
+    default:
+      return state
+    }
+}
+
+let store = createStore(reducer);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
